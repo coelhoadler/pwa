@@ -1,5 +1,7 @@
 CACHE MANIFEST
 
+#v3.2
+
 CACHE:
 
 css/estilos.css
@@ -25,6 +27,11 @@ js/cartao/render/CartaoOpcoes_render.js
 js/cartao/render/CartaoConteudo_render.js
 js/cartao/render/Cartao_render.js
 js/cartao/Cartao.js
+js/login/LoginUsuario_render.js
+js/login/LoginUsuario.js
+js/mural/render/Mural_render.js
+js/mural/Mural.js
+js/cabecalho/novoCartao.js
 img/bin2.svg
 img/edit.svg
 

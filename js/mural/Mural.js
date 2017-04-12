@@ -20,10 +20,20 @@ const Mural = (function(_render, Filtro){
     }
 
     function preparaCartao(cartao) {
+        const urlsImagens = Cartao.pegaImagens(cartao);  
+        urlsImagens.forEach(url => {
+            fetch(url).then((resposta) => {
+                caches.open("ceep-imagens").then(cache => {
+                    cache.put(url, resposta);
+                })
+            });
+        })
+
         cartao.on("mudanca.**", salvaCartoes)
         cartao.on("remocao", () => {
             cartoes = cartoes.slice(0);
             cartoes.splice(cartoes.indexOf(cartao),1);
+            salvaCartoes();
             render();
         })
     }
@@ -53,7 +63,7 @@ const Mural = (function(_render, Filtro){
             cartoes.push(cartao)
             salvaCartoes();
             preparaCartao(cartao);
-            render()
+            render();
             return true
         } else {
             alert("Você não está logado!");
